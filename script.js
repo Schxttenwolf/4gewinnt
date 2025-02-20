@@ -351,23 +351,49 @@ class Connect4 {
     }
 
     updateLabels() {
-        document.querySelector('.player1 .player-name').textContent = 'Spieler 1';
-        document.querySelector('.player2 .player-name').textContent = 
-            this.gameMode === 'ai' ? 
-            'Algorithmus' : 
-            'Spieler 2';
+        const translations = {
+            de: {
+                player1: 'Spieler 1',
+                player2: 'Spieler 2',
+                ai: 'Algorithmus',
+                newGame: 'Neues Spiel',
+                resetScores: 'Punktestand zurücksetzen',
+                vsPlayer: 'Gegen Freund',
+                vsAI: 'Gegen Algorithmus',
+                easy: 'Einfach',
+                medium: 'Mittel',
+                hard: 'Schwer',
+                confirmReset: 'Möchten Sie wirklich den Punktestand zurücksetzen?'
+            },
+            en: {
+                player1: 'Player 1',
+                player2: 'Player 2',
+                ai: 'Algorithm',
+                newGame: 'New Game',
+                resetScores: 'Reset Scores',
+                vsPlayer: 'vs Friend',
+                vsAI: 'vs Algorithm',
+                easy: 'Easy',
+                medium: 'Medium',
+                hard: 'Hard',
+                confirmReset: 'Do you really want to reset the scores?'
+            }
+        };
 
-        document.getElementById('resetGame').textContent = 'Neues Spiel';
-        document.getElementById('resetScores').textContent = 'Punktestand zurücksetzen';
+        document.querySelector('.player1 .player-name').textContent = translations[this.language].player1;
+        document.querySelector('.player2 .player-name').textContent = this.gameMode === 'ai' ? translations[this.language].ai : translations[this.language].player2;
+
+        document.getElementById('resetGame').textContent = translations[this.language].newGame;
+        document.getElementById('resetScores').textContent = translations[this.language].resetScores;
 
         const gameModeSelect = document.getElementById('gameMode');
-        gameModeSelect.options[0].textContent = 'Gegen Freund';
-        gameModeSelect.options[1].textContent = 'Gegen Algorithmus';
+        gameModeSelect.options[0].textContent = translations[this.language].vsPlayer;
+        gameModeSelect.options[1].textContent = translations[this.language].vsAI;
 
         const difficultySelect = document.getElementById('difficulty');
-        difficultySelect.options[0].textContent = 'Einfach';
-        difficultySelect.options[1].textContent = 'Mittel';
-        difficultySelect.options[2].textContent = 'Schwer';
+        difficultySelect.options[0].textContent = translations[this.language].easy;
+        difficultySelect.options[1].textContent = translations[this.language].medium;
+        difficultySelect.options[2].textContent = translations[this.language].hard;
     }
 
     resetGame() {
